@@ -1,0 +1,47 @@
+{
+  "name": "szepeviktor/wordpress-install",
+  "description": "Install WordPress by using Composer packages.",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.3",
+    "johnpbloch/wordpress": "^4.9",
+    "timber/timber": "^1.15",
+    "wpackagist-theme/twentytwelve":"^3.1",
+    "wpackagist-plugin/wp-redis": "^1.0"
+  },
+  "config": {
+    "classmap-authoritative": true,
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "extra": {
+    "installer-paths": {
+      "public/wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "public/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "public/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "public/core"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "scripts": {
+    "post-autoload-dump": [
+      "rm -rf public/core/wp-content"
+    ],
+    "cleanup": "git status --short --ignored | sed -n -e 's#^!! ##p' | xargs -r rm -vrf"
+  },
+  "scripts-descriptions": {
+    "cleanup": "Remove all ignored files."
+  }
+}

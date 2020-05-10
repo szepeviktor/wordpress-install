@@ -1,0 +1,19 @@
+# Composer
+/vendor/
+# Before the first deploy uncomment this line
+#/composer.lock
+
+# Core
+/public/core/
+# Plugins and themes
+/public/wp-content/plugins/
+/public/wp-content/themes/
+# Drop-ins
+#/public/wp-content/advanced-cache.php
+#/public/wp-content/db.php
+#/public/wp-content/db-error.php
+#/public/wp-content/install.php
+#/public/wp-content/maintenance.php
+#/public/wp-content/object-cache.php
+# Content
+/public/wp-content/uploads/
